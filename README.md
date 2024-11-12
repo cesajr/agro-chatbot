@@ -18,7 +18,7 @@ Para instalar e executar o projeto localmente, siga os passos abaixo:
 
 git clone https://github.com/seuusuario/agrofacil.git
 cd agrofacil
-
+```bash
 ## Estrutura do Projeto
 /meu-chatbot
 |-- /client // Front-end React
@@ -33,7 +33,7 @@ cd agrofacil
 |-- package.json // Arquivo de configuração do projeto Node.js, contendo dependências
 |-- package-lock.json // Arquivo gerado automaticamente que registra as versões exatas das dependências instaladas
 |-- .env // Arquivo para variáveis de ambiente, como a chave da API (não deve ser versionado)
-
+```
 
 ## Passo 1: Configuração do Back-End
 
