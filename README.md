@@ -491,9 +491,7 @@ Abra seu navegador e acesse `http://localhost:3000` para ver seu chatbot em aç�
 Você deve ser capaz de enviar mensagens e receber respostas do bot.
 
 9. Resultado
-
-https://github.com/user-attachments/assets/4d0ddfee-9bc7-407b-88d2-259c04f88f0f
-
+https://github.com/user-attachments/assets/2e2e90a9-e2fd-4579-b0c5-6488aa7cba57
 
 Sugestões:
 Paleta de Cores: Você pode ajustar as cores no CSS conforme necessário para se alinhar mais à paleta que você deseja.
