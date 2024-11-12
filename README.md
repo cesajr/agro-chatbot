@@ -38,7 +38,6 @@ cd agrofacil
 ## Passo 1: Configuração do Back-End
 
 ### 1.1. Instalação do Node.js
-
 Certifique-se de que o Node.js e o npm (Node Package Manager) estão instalados em sua máquina.
 Você pode verificar isso nos terminais do sistema operacional, git ou IDE com os seguintes comandos:
 ```
