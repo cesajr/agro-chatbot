@@ -15,12 +15,12 @@ O projeto visa tornar a tecnologia acessível e fácil de usar para todos os pro
 Para instalar e executar o projeto localmente, siga os passos abaixo:
 
 ### 1. Clone o Repositório
-```
+```bash
 git clone https://github.com/cesajr/agro-chatbot.git
 cd agrofacil
 ```
 ## Estrutura do Projeto
-```
+```bash
 /meu-chatbot
 |-- /client              // Front-end React
 |   |-- /public
@@ -44,7 +44,7 @@ cd agrofacil
 ### 1.1. Instalação do Node.js
 Verifique se o Node.js e o npm (Node Package Manager) estão instalados em sua máquina.
 Você pode verificar isso nos terminais do sistema operacional, git ou IDE com os seguintes comandos:
-```
+```bash
 node --version
 npm --version
 ```
@@ -52,21 +52,21 @@ Se não estiverem instalados, baixe e instale a versão recomendada em nodejs.or
 
 1.2. Criar a Estrutura do Projeto
 Crie uma nova pasta para o projeto:
-```
+```bash
 mkdir chatbot
 cd chatbot
 ```
 Inicie um novo projeto Node.js:
-```
+```bash
 npm init -y
 ```
 1.3. Instalação das Dependências do Back End e API
 Instale as dependências necessárias:
-```
+```bash
 npm install express cors dotenv axios
 ```
 1.3.1. Instale os pacotes necessários para trabalhar com variáveis de ambiente e o SDK do Gemini:
-```
+```bash
 npm install @google/generative-ai
 ```
 2. Configuração da Chave API (Variável de ambiente que deverá ser ignorada na hora de subir para o repositório no github):
@@ -83,12 +83,12 @@ Substitua YOUR_GEMINI_KEY pela chave que você obteve.
 3. Configuração do Projeto
 Criar Estrutura de Pastas
 Crie uma nova pasta chamada lib dentro da pasta do seu projeto:
-```
+```bash
 mkdir lib
 ```
 3.1. Criar Arquivo `config.js`
 Dentro da pasta lib, crie um arquivo chamado `config.js` e adicione o seguinte código:
-```
+```javascript
 // Importa a biblioteca dotenv para carregar variáveis de ambiente do arquivo .env
 // Imports the dotenv library to load environment variables from the .env file
 const dotenv = require("dotenv");
@@ -107,7 +107,7 @@ module.exports = { API_KEY };
 ```
 3.1.2. Criar Arquivo `gemini.js`
 Ainda na pasta lib, crie um arquivo chamado `gemini.js` para manipulação de texto:
-```
+```javascript
 // Importa a biblioteca GoogleGenerativeAI para usar a API Gemini do Google
 // Imports the GoogleGenerativeAI library to use Google's Gemini API
 const { GoogleGenerativeAI } = require("@google/generative-ai");
@@ -157,7 +157,7 @@ module.exports = { generateText };
 ```
 4. Criar o Servidor Express
 Crie um arquivo chamado `server.js` na raiz do projeto e adicione o seguinte código:
-```
+```javascript
 // Importa o framework Express para criar o servidor
 // Imports the Express framework to create the server
 const express = require("express");
@@ -254,7 +254,7 @@ app.listen(PORT, () => {
 ```
 4.1. Testar o Back-End
 Inicie o servidor:
-```
+```bash
 node server.js
 ```
 Acesse `http://localhost:3000` no seu navegador para verificar se o servidor está funcionando.
