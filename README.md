@@ -474,7 +474,7 @@ button {
 }
 
 ```
-7: Conectar o Frontend ao Backend
+7. Conectar o Frontend ao Backend
 Inicie o Servidor Express:
 Certifique-se de que seu servidor Express está rodando na raiz do seu projeto:
 ```bash
@@ -486,9 +486,14 @@ Navegue até a pasta client e inicie o aplicativo React:
 cd client
 npm start
 ```
-8: Testar a Aplicação
+8. Testar a Aplicação
 Abra seu navegador e acesse `http://localhost:3000` para ver seu chatbot em ação.
 Você deve ser capaz de enviar mensagens e receber respostas do bot.
+
+9. Resultado
+
+https://github.com/user-attachments/assets/4d0ddfee-9bc7-407b-88d2-259c04f88f0f
+
 
 Sugestões:
 Paleta de Cores: Você pode ajustar as cores no CSS conforme necessário para se alinhar mais à paleta que você deseja.
