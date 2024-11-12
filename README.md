@@ -16,7 +16,6 @@ Para instalar e executar o projeto localmente, siga os passos abaixo:
 
 ### 1. Clone o Repositório
 
-```bash
 git clone https://github.com/seuusuario/agrofacil.git
 cd agrofacil
 
@@ -42,7 +41,6 @@ cd agrofacil
 
 Certifique-se de que o Node.js e o npm (Node Package Manager) estão instalados em sua máquina. Você pode verificar isso nos terminais do sistema operacional, git ou IDE com os seguintes comandos:
 
-```bash
 node --version
 npm --version
 
@@ -57,3 +55,4 @@ npm init -y
 
 1.3. Instalação das Dependências
 Instale as dependências necessárias:
+npm install express cors dotenv axios express-rate-limit
