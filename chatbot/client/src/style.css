@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa; /* Cor de fundo suave */
+}
+
+.app {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.chat-window {
+    border: 1px solid #00796b; /* Borda verde */
+    padding: 10px;
+    height: 300px;
+    overflow-y: scroll;
+    background-color: #ffffff; /* Fundo branco para a área de chat */
+}
+
+.user-message {
+    color: #00796b; /* Cor das mensagens do usuário */
+    font-weight: bold; /* Negrito */
+}
+
+.bot-message {
+    color: #d32f2f; /* Cor das mensagens do bot */
+    font-style: italic; /* Itálico */
+}
+
+input[type="text"] {
+    width: calc(100% - 100px);
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+}
