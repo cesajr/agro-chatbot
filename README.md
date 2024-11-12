@@ -40,19 +40,25 @@ cd agrofacil
 ### 1.1. Instalação do Node.js
 
 Certifique-se de que o Node.js e o npm (Node Package Manager) estão instalados em sua máquina. Você pode verificar isso nos terminais do sistema operacional, git ou IDE com os seguintes comandos:
-
+```
 node --version
 npm --version
-
+```
 Se não estiverem instalados, baixe e instale a versão recomendada em nodejs.org.
 
 1.2. Criar a Estrutura do Projeto
 Crie uma nova pasta para o projeto:
+```
 mkdir meu-chatbot
 cd meu-chatbot
+```
 Inicie um novo projeto Node.js:
+```
 npm init -y
+```
 
 1.3. Instalação das Dependências
 Instale as dependências necessárias:
+```
 npm install express cors dotenv axios express-rate-limit
+```
