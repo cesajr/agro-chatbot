@@ -15,9 +15,10 @@ O projeto visa tornar a tecnologia acessível e fácil de usar para todos os pro
 Para instalar e executar o projeto localmente, siga os passos abaixo:
 
 ### 1. Clone o Repositório
-
-git clone https://github.com/seuusuario/agrofacil.git
+```
+git clone https://github.com/cesajr/agro-chatbot.git
 cd agrofacil
+```
 ## Estrutura do Projeto
 ```
 /meu-chatbot
