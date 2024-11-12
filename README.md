@@ -56,9 +56,46 @@ Inicie um novo projeto Node.js:
 ```
 npm init -y
 ```
-
-1.3. Instalação das Dependências
+1.3. Instalação das Dependências do Back End
 Instale as dependências necessárias:
 ```
 npm install express cors dotenv axios express-rate-limit
 ```
+1.4. Criar o Servidor Express
+Crie um arquivo chamado server.js na raiz do projeto e adicione o seguinte código:
+```
+const express = require("express"); // Importa o Express para criar o servidor
+const cors = require("cors");       // Importa o CORS para permitir requisições de diferentes origens
+const rateLimit = require("express-rate-limit"); // Importa o middleware de limitação de taxa
+require("dotenv").config();          // Carrega variáveis de ambiente do arquivo .env
+
+const app = express();
+const PORT = process.env.PORT || 3000; // Define a porta do servidor, usando a variável de ambiente ou 3000 como padrão
+
+app.use(cors());                     // Habilita CORS para todas as rotas
+app.use(express.json());             // Permite que o Express entenda requisições JSON
+
+// Limitação de taxa (5 requisições por minuto)
+const limiter = rateLimit({
+    windowMs: 1 * 60 * 1000,         // Janela de tempo de 1 minuto
+    max: 5,                          // Limita cada IP a 5 requisições por janela
+    message: "Muitas requisições feitas em um curto período. Tente novamente mais tarde." // Mensagem de erro personalizada
+});
+app.use(limiter);                   // Aplica a limitação de taxa a todas as rotas
+
+// Rota básica para teste
+app.get("/", (req, res) => {
+    res.send("Servidor funcionando!"); // Responde com uma mensagem simples ao acessar a raiz
+});
+
+// Iniciar o servidor
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`); // Exibe mensagem no console quando o servidor está ativo
+});
+```
+1.5. Testar o Back-End
+Inicie o servidor:
+```
+node server.js
+```
+Acesse http://localhost:3000 no seu navegador para verificar se o servidor está funcionando.
