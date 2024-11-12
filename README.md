@@ -63,7 +63,7 @@ npm init -y
 1.3. Instalação das Dependências do Back End e API
 Instale as dependências necessárias:
 ```bash
-npm install express cors dotenv axios
+npm install express cors dotenv axios express-rate-limit
 ```
 1.3.1. Instale os pacotes necessários para trabalhar com variáveis de ambiente e o SDK do Gemini:
 ```bash
@@ -259,4 +259,248 @@ node server.js
 ```
 Acesse `http://localhost:3000` no seu navegador para verificar se o servidor está funcionando.
 
+5. Criar o Front-End para testar as funcionalidades da aplicaçãpo
 
+5.1. Criar o Projeto React
+Navegue até o Diretório do Projeto:
+Abra o terminal e vá até a pasta onde está seu projeto:
+```bash
+cd C:\caminho\para\meu-chatbot
+```
+5.2. Criar o Front-end com Create React App:
+Execute o seguinte comando para criar um novo aplicativo React na pasta client:
+```bash
+npx create-react-app client
+```
+5.3. Navegue até a Pasta do Cliente:
+```bash
+cd client
+```
+5.3.1. Instale Dependências Adicionais (se necessário):
+Você pode instalar bibliotecas adicionais que queira usar, como Axios para requisições HTTP:
+```bash
+npm install axios
+```
+6. Estruturar o Código em React
+Agora vamos modificar os arquivos principais dentro da pasta client/src.
+6.1. Código Completo do `index.js`
+Substitua o conteúdo de src/index.js pelo seguinte:
+```javascript
+// Importa o React para criar e gerenciar componentes
+// Imports React to create and manage components
+import React from 'react';
+
+// Importa ReactDOM para renderizar o aplicativo no DOM
+// Imports ReactDOM to render the app into the DOM
+import ReactDOM from 'react-dom/client';
+
+// Importa o componente principal do aplicativo (App)
+// Imports the main app component (App)
+import App from './App';
+
+// Importa o arquivo CSS para estilização
+// Imports the CSS file for styling
+import './style.css';
+
+// Seleciona o elemento 'root' no HTML e define como o ponto de montagem do aplicativo React
+// Selects the 'root' element in the HTML and sets it as the mounting point for the React app
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Renderiza o aplicativo dentro do modo estrito do React para verificar problemas potenciais
+// Renders the app within React's strict mode to check for potential issues
+root.render(
+  <React.StrictMode>
+    <App /> {/* Renderiza o componente App aqui */}
+            {/* Renders the App component here */}
+  </React.StrictMode>
+);
+```
+6.2. Código Completo do `App.js`
+Crie ou substitua o conteúdo de src/App.js pelo seguinte código:
+```javascript
+// Importa o React e os hooks useState para gerenciar estado dentro do componente
+// Imports React and the useState hook to manage state within the component
+import React, { useState } from 'react';
+
+// Importa a biblioteca axios para fazer requisições HTTP
+// Imports the axios library to make HTTP requests
+import axios from 'axios';
+
+function App() {
+    // Estado para armazenar a entrada do usuário
+    // State to store the user's input
+    const [userInput, setUserInput] = useState('');
+    
+    // Estado para armazenar o histórico de mensagens do chat
+    // State to store the chat history
+    const [chatHistory, setChatHistory] = useState([]);
+
+    // Função assíncrona que envia a mensagem do usuário ao servidor e lida com a resposta
+    // Async function that sends the user's message to the server and handles the response
+    const sendMessage = async () => {
+        // Retorna sem fazer nada se o input do usuário estiver vazio
+        // Returns without doing anything if the user input is empty
+        if (!userInput) return;
+
+        // Atualiza o histórico de chat com a mensagem do usuário
+        // Updates chat history with the user's message
+        setChatHistory([...chatHistory, { sender: 'Você', text: userInput }]);
+        
+        try {
+            // Envia a mensagem do usuário para o endpoint da API e aguarda a resposta
+            // Sends the user's message to the API endpoint and waits for the response
+            const response = await axios.post('http://localhost:3000/api/message', { message: userInput });
+            
+            // Atualiza o histórico de chat com a resposta do bot
+            // Updates chat history with the bot's response
+            setChatHistory([
+                ...chatHistory, 
+                { sender: 'Você', text: userInput }, 
+                { sender: 'Bot', text: response.data.reply }
+            ]);
+        } catch (error) {
+            // Loga o erro no console caso a requisição falhe
+            // Logs the error to the console if the request fails
+            console.error("Erro ao enviar mensagem:", error);
+            
+            // Adiciona uma mensagem de erro ao histórico de chat
+            // Adds an error message to the chat history
+            setChatHistory([
+                ...chatHistory, 
+                { sender: 'AgroBot', text: 'Desculpe, ocorreu um erro.' }
+            ]);
+        }
+
+        // Limpa o campo de entrada do usuário
+        // Clears the user input field
+        setUserInput('');
+    };
+
+    return (
+        <div className="app">
+            {/* Título do chatbot */}
+            {/* Chatbot title */}
+            <h1>AgroChatbot</h1>
+            
+            {/* Janela do chat onde o histórico de mensagens é exibido */}
+            {/* Chat window where the chat history is displayed */}
+            <div className="chat-window">
+                {chatHistory.map((msg, index) => (
+                    <p 
+                        key={index} 
+                        className={msg.sender === 'Você' ? 'user-message' : 'bot-message'}
+                    >
+                        <strong>{msg.sender}: </strong>{msg.text}
+                    </p>
+                ))}
+            </div>
+            
+            {/* Campo de entrada de texto para o usuário digitar a mensagem */}
+            {/* Text input field for the user to type their message */}
+            <input 
+                type="text" 
+                value={userInput} 
+                onChange={(e) => setUserInput(e.target.value)} 
+                placeholder="Digite sua mensagem..." 
+            />
+            
+            {/* Botão para enviar a mensagem do usuário */}
+            {/* Button to send the user's message */}
+            <button onClick={sendMessage}>Enviar</button>
+        </div>
+    );
+}
+
+// Exporta o componente App como padrão
+// Exports the App component as default
+export default App;
+```
+6.3. Código Completo do `style.css`
+Crie ou substitua o conteúdo de src/style.css pelo seguinte código:
+```css
+body {
+    font-family: Arial, sans-serif;   /* Define a fonte padrão para o corpo */
+                                      /* Sets the default font for the body */
+    background-color: #e0f7fa;     /* Aplica uma cor de fundo suave */
+                                  /* Applies a soft background color */
+}
+
+.app {
+    max-width: 600px;  /* Define a largura máxima da aplicação */
+                      /* Sets the maximum width of the app */
+    margin: auto;  /* Centraliza o aplicativo horizontalmente */
+                  /* Centers the app horizontally */
+    padding: 20px; /* Define o espaçamento interno da aplicação */
+                  /* Sets padding within the app */
+}
+
+.chat-window {
+    border: 1px solid #00796b; /* Adiciona uma borda verde ao redor da janela de chat */
+                              /* Adds a green border around the chat window */
+    padding: 10px;  /* Define o espaçamento interno da janela de chat */
+                   /* Sets padding within the chat window */
+    height: 300px; /* Define uma altura fixa para a janela de chat */
+                  /* Sets a fixed height for the chat window */
+    overflow-y: scroll; /* Habilita rolagem vertical quando o conteúdo excede a altura */
+                        /* Enables vertical scrolling when content exceeds the height */
+    background-color: #ffffff; /* Define o fundo da área de chat como branco */
+                              /* Sets the chat area background to white */
+}
+
+.user-message {
+    color: #00796b; /* Define a cor das mensagens do usuário como verde */
+                   /* Sets the user message color to green */
+    font-weight: bold; /* Define o estilo de texto das mensagens do usuário como negrito */
+                       /* Sets the user message text style to bold */
+}
+
+.bot-message {
+    color: #d32f2f; /* Define a cor das mensagens do bot como vermelho */
+                    /* Sets the bot message color to red */
+    font-style: italic; /* Define o estilo de texto das mensagens do bot como itálico */
+                        /* Sets the bot message text style to italic */
+}
+
+input[type="text"] {
+    width: calc(100% - 100px); /* Define a largura ajustada para o campo de texto considerando espaço para o botão */
+                              /* Sets adjusted width for the text input, accounting for button space */
+    padding: 10px; /* Define o espaçamento interno do campo de texto */
+                  /* Sets padding for the text input */
+}
+
+button {
+    padding: 10px; /* Define o espaçamento interno do botão */
+                  /* Sets padding for the button */
+}
+
+```
+7: Conectar o Frontend ao Backend
+Inicie o Servidor Express:
+Certifique-se de que seu servidor Express está rodando na raiz do seu projeto:
+```bash
+node server.js
+```
+Inicie o Frontend React:
+Navegue até a pasta client e inicie o aplicativo React:
+```bash
+cd client
+npm start
+```
+8: Testar a Aplicação
+Abra seu navegador e acesse `http://localhost:3000` para ver seu chatbot em ação.
+Você deve ser capaz de enviar mensagens e receber respostas do bot.
+
+Sugestões:
+Paleta de Cores: Você pode ajustar as cores no CSS conforme necessário para se alinhar mais à paleta que você deseja.
+Componentes Adicionais: À medida que você se sentir mais confortável com o React, considere adicionar mais componentes ou funcionalidades.
+
+Contribuição:
+Contribuições são bem-vindas! Se você deseja contribuir, siga estas etapas:
+Fork este repositório.
+Crie uma nova branch (git checkout -b feature/nome-da-sua-feature).
+Faça suas alterações e commit (git commit -m 'Adiciona nova funcionalidade').
+Envie para o repositório remoto (git push origin feature/nome-da-sua-feature).
+Abra um Pull Request.
+
+Licença
+Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para mais detalhes.
