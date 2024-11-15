@@ -498,7 +498,6 @@ Sugestões:
 Paleta de Cores: Você pode ajustar as cores no CSS conforme necessário para se alinhar mais à paleta que você deseja.
 Componentes Adicionais: À medida que você se sentir mais confortável com o React, considere adicionar mais componentes ou funcionalidades.
 
-Contribuição:
 Contribuições são bem-vindas! Se você deseja contribuir, siga estas etapas:
 - **Fork este repositório.**
 - **Crie uma nova branch (git checkout -b feature/nome-da-sua-feature).**
