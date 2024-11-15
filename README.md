@@ -500,11 +500,11 @@ Componentes Adicionais: À medida que você se sentir mais confortável com o Re
 
 Contribuição:
 Contribuições são bem-vindas! Se você deseja contribuir, siga estas etapas:
-Fork este repositório.
-Crie uma nova branch (git checkout -b feature/nome-da-sua-feature).
-Faça suas alterações e commit (git commit -m 'Adiciona nova funcionalidade').
-Envie para o repositório remoto (git push origin feature/nome-da-sua-feature).
-Abra um Pull Request.
+- **Fork este repositório.**
+- **Crie uma nova branch (git checkout -b feature/nome-da-sua-feature).**
+- **Faça suas alterações e commit (git commit -m 'Adiciona nova funcionalidade').**
+- **Envie para o repositório remoto (git push origin feature/nome-da-sua-feature).**
+- **Abra um Pull Request.**
 
-Licença
-Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para mais detalhes.
+**Licença**
+**Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para mais detalhes.**
