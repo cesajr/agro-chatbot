@@ -17,7 +17,7 @@ Para instalar e executar o projeto localmente, siga os passos abaixo:
 ### 1. Clone o Repositório
 ```bash
 git clone https://github.com/cesajr/agro-chatbot.git
-cd agrofacil
+cd agrochatbot
 ```
 ## Estrutura do Projeto
 ```bash
